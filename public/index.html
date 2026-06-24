@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<title>Re-Entry</title>
-<meta name="description" content="A quiet space for coming back. For when you've been away from something and returning feels harder than it should.">
-<meta property="og:title" content="Re-Entry">
-<meta property="og:description" content="A quiet space for coming back. For when you've been away from something and returning feels harder than it should.">
+<title>Harbor</title>
+<meta name="description" content="A quiet harbor for coming back. For when you've been away from something and returning feels harder than it should.">
+<meta property="og:title" content="Harbor">
+<meta property="og:description" content="A quiet harbor for coming back. For when you've been away from something and returning feels harder than it should.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
@@ -84,9 +84,11 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;font-weight:300;overflow:
 .typing span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);animation:typingBounce 1.2s ease infinite}
 .typing span:nth-child(2){animation-delay:0.2s}
 .typing span:nth-child(3){animation-delay:0.4s}
-.lantern-btn{position:absolute;bottom:70px;right:16px;z-index:10;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;animation:float 3s ease-in-out infinite;background:none;border:none;padding:0}
-.lantern-glow{font-size:26px;filter:drop-shadow(0 0 10px rgba(249,202,36,0.9))}
-.lantern-label{font-size:9px;color:rgba(255,255,255,0.55);letter-spacing:0.06em;font-family:'DM Sans',sans-serif}
+.lantern-btn{position:absolute;bottom:70px;right:16px;z-index:10;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:none;padding:0;animation:float 3s ease-in-out infinite}
+.lantern-btn:hover .lantern-glow{filter:drop-shadow(0 0 16px rgba(249,202,36,1)) drop-shadow(0 0 32px rgba(249,202,36,0.6))}
+.lantern-glow{font-size:42px;filter:drop-shadow(0 0 10px rgba(249,202,36,0.9)) drop-shadow(0 0 20px rgba(249,202,36,0.4));animation:lanternPulse 2.5s ease-in-out infinite}
+@keyframes lanternPulse{0%,100%{filter:drop-shadow(0 0 8px rgba(249,202,36,0.7)) drop-shadow(0 0 16px rgba(249,202,36,0.3))}50%{filter:drop-shadow(0 0 18px rgba(249,202,36,1)) drop-shadow(0 0 36px rgba(249,202,36,0.6))}}
+.lantern-label{display:flex;align-items:center;gap:6px;font-size:17px;color:rgba(255,220,120,0.92);font-family:'Dancing Script',cursive;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,0.8);letter-spacing:0.02em}
 .chat-input-wrap{padding:10px 16px 16px;background:rgba(10,22,40,0.55);backdrop-filter:blur(10px);border-top:0.5px solid rgba(255,255,255,0.1);flex-shrink:0;z-index:5}
 .input-row{display:flex;gap:10px;align-items:flex-end;max-width:680px;margin:0 auto}
 textarea{flex:1;background:rgba(255,255,255,0.1);border:0.5px solid rgba(255,255,255,0.2);border-radius:14px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);resize:none;outline:none;min-height:44px;max-height:120px;line-height:1.5;transition:border-color 0.2s ease}
@@ -129,11 +131,15 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
 .fortune-area.open{display:flex}
 .cookie-scene{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;position:relative;min-height:80px}
 .cookie-wrap{display:flex;align-items:center;justify-content:center;gap:0;cursor:pointer;position:relative;z-index:2}
-.cookie-half{font-size:38px;line-height:1;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);display:inline-block;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4))}
-.cookie-left{transform-origin:right center}
-.cookie-right{transform-origin:left center}
-.cookie-wrap.cracking .cookie-left{transform:translateX(-18px) rotate(-25deg) translateY(-8px)}
-.cookie-wrap.cracking .cookie-right{transform:translateX(18px) rotate(25deg) translateY(-8px)}
+.cookie-whole{font-size:42px;line-height:1;display:block;transition:opacity 0.1s ease;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4))}
+.cookie-halves{display:none;position:relative;width:52px;height:42px}
+.cookie-half{font-size:38px;line-height:1;position:absolute;top:0;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4));transition:all 0.55s cubic-bezier(0.4,0,0.2,1)}
+.cookie-left{left:0;clip-path:inset(0 50% 0 0);transform-origin:right center}
+.cookie-right{left:0;clip-path:inset(0 0 0 50%);transform-origin:left center}
+.cookie-wrap.cracking .cookie-whole{opacity:0}
+.cookie-wrap.cracking .cookie-halves{display:block}
+.cookie-wrap.cracking .cookie-left{transform:translateX(-22px) rotate(-30deg) translateY(-10px)}
+.cookie-wrap.cracking .cookie-right{transform:translateX(22px) rotate(30deg) translateY(-10px)}
 .paper-strip{width:140px;max-height:0;overflow:hidden;background:linear-gradient(135deg,#fffef0,#fff8d6);border-radius:4px;position:relative;transition:max-height 0.6s cubic-bezier(0.4,0,0.2,1) 0.35s,opacity 0.4s ease 0.35s;opacity:0;box-shadow:0 2px 12px rgba(0,0,0,0.25);margin-top:-4px}
 .paper-strip.open{max-height:120px;opacity:1}
 .paper-lines{position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(transparent,transparent 18px,rgba(100,150,200,0.12) 18px,rgba(100,150,200,0.12) 19px);border-radius:4px}
@@ -167,10 +173,10 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
     </svg>
   </div>
   <div class="opening-content">
-    <p class="eyebrow">a quiet space for coming back</p>
-    <h1 class="opening-title">Re-<em>Entry</em></h1>
+    <p class="eyebrow">a quiet harbor for coming back</p>
+    <h1 class="opening-title"><em>Harbor</em></h1>
     <div class="divider"></div>
-    <p class="opening-sub">For when you've been away from something<br>and coming back feels harder than it should.<br><br>No plans, no pressure — just a conversation<br>to help you find the smallest way back in.</p>
+    <p class="opening-sub">For when you've been away from something<br>and coming back feels harder than it should.<br><br>No plans, no pressure — just a quiet place<br>to find the smallest way back in.</p>
     <button class="cta-btn" onclick="showMood()">I'm ready →</button>
     <p class="opening-note">No account needed. No judgment either.</p>
   </div>
@@ -227,7 +233,7 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
     </div>
     <div class="chat-header">
       <div class="header-dot"></div>
-      <span class="header-name">Re-Entry</span>
+      <span class="header-name">Harbor</span>
       <div class="header-right">
         <span class="header-status">here with you</span>
         <button class="start-over-btn" onclick="resetChat()">start over</button>
@@ -236,7 +242,10 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
     <div class="chat-messages" id="messages"></div>
     <button class="lantern-btn" onclick="toggleCorner()">
       <span class="lantern-glow">🏮</span>
-      <span class="lantern-label">cozy corner</span>
+      <span class="lantern-label">
+        cozy corner
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,220,120,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 C8 10 14 8 19 12"/><path d="M15 8 L19 12 L15 16"/></svg>
+      </span>
     </button>
     <div class="chat-input-wrap">
       <div class="input-row">
@@ -297,8 +306,11 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
         <div class="fortune-area" id="fortuneArea">
           <div class="cookie-scene" id="cookieScene">
             <div class="cookie-wrap" id="cookieWrap" onclick="crackCookie()">
-              <div class="cookie-half cookie-left" id="cookieLeft">🥠</div>
-              <div class="cookie-half cookie-right" id="cookieRight">🥠</div>
+              <span class="cookie-whole" id="cookieWhole">🥠</span>
+              <div class="cookie-halves" id="cookieHalves">
+                <span class="cookie-half cookie-left">🥠</span>
+                <span class="cookie-half cookie-right">🥠</span>
+              </div>
             </div>
             <div class="paper-strip" id="paperStrip">
               <div class="paper-lines"></div>
@@ -347,7 +359,7 @@ function toggleMusic(){const p=document.getElementById('soundPicker');const o=p.
 function toggleBreath(){const g=document.getElementById('breathGuide');const o=g.classList.contains('open');closeAllFeatures();if(!o){g.classList.add('open');document.getElementById('breathCircle').classList.add('breathing');document.getElementById('breathIcon').classList.add('active')}}
 function stopBreath(){document.getElementById('breathCircle').classList.remove('breathing');document.getElementById('breathIcon').classList.remove('active')}
 function toggleFortune(){const a=document.getElementById('fortuneArea');const o=a.classList.contains('open');closeAllFeatures();if(!o){a.classList.add('open');resetCookie()}}
-function resetCookie(){const w=document.getElementById('cookieWrap'),s=document.getElementById('paperStrip'),t=document.getElementById('fortuneText'),n=document.getElementById('fortuneNew');w.classList.remove('cracking');s.classList.remove('open');t.textContent='';n.classList.remove('show')}
+function resetCookie(){const w=document.getElementById('cookieWrap'),s=document.getElementById('paperStrip'),t=document.getElementById('fortuneText'),n=document.getElementById('fortuneNew');w.classList.remove('cracking');s.classList.remove('open');t.textContent='';n.classList.remove('show');document.getElementById('cookieWhole').style.opacity='1'}
 function crackCookie(){const w=document.getElementById('cookieWrap');if(w.classList.contains('cracking'))return;w.classList.add('cracking');setTimeout(()=>{const s=document.getElementById('paperStrip'),t=document.getElementById('fortuneText'),n=document.getElementById('fortuneNew');const f=FORTUNES[Math.floor(Math.random()*FORTUNES.length)];t.textContent=f;s.classList.add('open');setTimeout(()=>n.classList.add('show'),800)},400)}
 function newFortune(){resetCookie();setTimeout(crackCookie,300)}
 function toggleConstellation(){const a=document.getElementById('constArea');const o=a.classList.contains('open');closeAllFeatures();if(!o){a.classList.add('open');setTimeout(initConst,50)}}
