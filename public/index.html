@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;font-family:'DM Sans',sans-serif;font-weight:300;overflow:hidden;background:#fff}
+html,body{height:100%;height:-webkit-fill-available;font-family:'DM Sans',sans-serif;font-weight:300;overflow:hidden;background:#fff;position:fixed;width:100%}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes twinkle{0%,100%{opacity:0}50%{opacity:var(--op,0.8)}}
@@ -27,9 +27,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;font-weight:300;overflow:
 @keyframes bulbGlow{0%,100%{opacity:0.7;filter:drop-shadow(0 0 2px #ffcc00) drop-shadow(0 0 5px #ff9900)}50%{opacity:1;filter:drop-shadow(0 0 4px #ffee00) drop-shadow(0 0 10px #ffcc00) drop-shadow(0 0 16px rgba(255,180,0,0.4))}}
 @keyframes cookieCrack{0%{transform:scale(1) rotate(0)}50%{transform:scale(1.2) rotate(-5deg)}100%{transform:scale(0.9) rotate(3deg)}}
 @keyframes fortuneReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.screen{display:none;width:100%;height:100vh}
+.screen{display:none;width:100%;height:100%;position:fixed;top:0;left:0;right:0;bottom:0}
 .screen.active{display:flex}
-#opening{background:#fff;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:2rem;animation:fadeIn 0.6s ease both}
+#opening{background:#fff;flex-direction:column;align-items:center;justify-content:center;position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;padding:2rem;animation:fadeIn 0.6s ease both}
 .opening-wave{position:absolute;bottom:0;left:0;right:0;height:140px;pointer-events:none}
 .opening-content{position:relative;z-index:2;text-align:center;max-width:440px;width:100%}
 .eyebrow{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#7ab8d4;margin-bottom:24px;font-weight:400;animation:fadeUp 1s ease 0.1s both}
@@ -40,7 +40,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;font-weight:300;overflow:
 .cta-btn{display:inline-flex;align-items:center;gap:8px;background:#1a6b8a;color:#fff;border:none;padding:12px 28px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;cursor:pointer;transition:all 0.25s ease;margin-bottom:14px;animation:fadeUp 1s ease 0.4s both}
 .cta-btn:hover{background:#0f4f6e;transform:translateY(-2px)}
 .opening-note{font-size:11px;color:#9cc5d8;animation:fadeUp 1s ease 0.5s both}
-#mood{background:#fff;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:2rem;animation:fadeIn 0.5s ease both}
+#mood{background:#fff;flex-direction:column;align-items:center;justify-content:center;position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;padding:2rem;animation:fadeIn 0.5s ease both}
 .mood-wave{position:absolute;bottom:0;left:0;right:0;height:120px;pointer-events:none}
 .mood-content{position:relative;z-index:2;text-align:center;max-width:400px;width:100%;animation:fadeUp 0.6s ease both}
 .mood-question{font-family:'Lora',serif;font-size:clamp(1.4rem,5vw,1.9rem);font-weight:400;color:#1a6b8a;line-height:1.4;margin-bottom:8px}
@@ -52,8 +52,8 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;font-weight:300;overflow:
 .mood-label{display:flex;flex-direction:column;gap:2px}
 .mood-label strong{font-weight:400;font-size:14px;color:#1a6b8a}
 .mood-label span{font-size:12px;color:#7ab8d4}
-#chat{flex-direction:row;position:relative;animation:fadeIn 0.5s ease both}
-.chat-main{flex:1;background:linear-gradient(180deg,#0a1628 0%,#0d2444 22%,#0f3460 48%,#1a5276 68%,#2471a3 83%,#3498db 93%,#5dade2 100%);display:flex;flex-direction:column;position:relative;overflow:hidden}
+#chat{flex-direction:row;position:fixed;top:0;left:0;right:0;bottom:0;animation:fadeIn 0.5s ease both;overflow:hidden}
+.chat-main{flex:1;background:linear-gradient(180deg,#0a1628 0%,#0d2444 22%,#0f3460 48%,#1a5276 68%,#2471a3 83%,#3498db 93%,#5dade2 100%);display:flex;flex-direction:column;position:relative;overflow:hidden;min-height:0;height:100%}
 .sea-stars{position:absolute;top:0;left:0;right:0;height:40%;pointer-events:none;z-index:0}
 .sea-star{position:absolute;width:2px;height:2px;border-radius:50%;background:white;animation:twinkle var(--d,3s) ease-in-out infinite var(--delay,0s);opacity:0}
 .moon{position:absolute;top:24px;right:70px;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff9e6,#ffeaa7,#f9ca24);box-shadow:0 0 20px rgba(249,202,36,0.4),0 0 40px rgba(249,202,36,0.15);animation:moonGlow 4s ease-in-out infinite;z-index:1}
@@ -63,13 +63,13 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;font-weight:300;overflow:
 .wave1{animation:wave-move 6s linear infinite;opacity:0.7;bottom:8px}
 .wave2{animation:wave-move 9s linear infinite reverse;opacity:0.5}
 .wave3{animation:wave-move 12s linear infinite;opacity:0.3;bottom:16px}
-.chat-header{display:flex;align-items:center;gap:10px;padding:13px 16px;background:rgba(10,22,40,0.65);backdrop-filter:blur(10px);border-bottom:0.5px solid rgba(255,255,255,0.1);flex-shrink:0;z-index:5;position:relative}
+.chat-header{display:flex;align-items:center;gap:10px;padding:13px 16px;background:rgba(10,22,40,0.65);backdrop-filter:blur(10px);border-bottom:0.5px solid rgba(255,255,255,0.1);flex-shrink:0;z-index:5;position:relative;-webkit-flex-shrink:0}
 .header-dot{width:7px;height:7px;border-radius:50%;background:#5dade2;opacity:0.9}
 .header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
 .header-status{position:absolute;left:50%;transform:translateX(-50%);font-size:18px;color:rgba(255,255,255,0.92);font-family:'Lora',serif;font-style:italic;font-weight:400;letter-spacing:0.04em;white-space:nowrap}
 .start-over-btn{font-size:12px;background:rgba(255,255,255,0.18);color:#ffffff;border:1px solid rgba(255,255,255,0.45);padding:7px 18px;border-radius:100px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:400;letter-spacing:0.02em;transition:all 0.2s ease}
 .start-over-btn:hover{background:rgba(255,255,255,0.28);border-color:rgba(255,255,255,0.65);transform:translateY(-1px)}
-.chat-messages{flex:1;overflow-y:auto;padding:24px 20px;display:flex;flex-direction:column;gap:12px;position:relative;z-index:2;max-width:680px;width:100%;margin:0 auto;align-self:center}
+.chat-messages{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:24px 20px;display:flex;flex-direction:column;gap:12px;position:relative;z-index:2;max-width:680px;width:100%;margin:0 auto;align-self:center;min-height:0}
 .chat-messages::-webkit-scrollbar{width:3px}
 .chat-messages::-webkit-scrollbar-track{background:transparent}
 .chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2);border-radius:3px}
@@ -88,7 +88,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;font-weight:300;overflow:
 .lantern-glow{font-size:42px;filter:drop-shadow(0 0 10px rgba(249,202,36,0.9)) drop-shadow(0 0 20px rgba(249,202,36,0.4));animation:lanternPulse 2.5s ease-in-out infinite}
 @keyframes lanternPulse{0%,100%{filter:drop-shadow(0 0 8px rgba(249,202,36,0.7)) drop-shadow(0 0 16px rgba(249,202,36,0.3))}50%{filter:drop-shadow(0 0 18px rgba(249,202,36,1)) drop-shadow(0 0 36px rgba(249,202,36,0.6))}}
 .lantern-label{display:flex;align-items:center;gap:6px;font-size:17px;color:rgba(255,220,120,0.92);font-family:'Dancing Script',cursive;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,0.8);letter-spacing:0.02em}
-.chat-input-wrap{padding:10px 16px 16px;background:rgba(10,22,40,0.55);backdrop-filter:blur(10px);border-top:0.5px solid rgba(255,255,255,0.1);flex-shrink:0;z-index:5}
+.chat-input-wrap{padding:10px 16px env(safe-area-inset-bottom,16px);background:rgba(10,22,40,0.55);backdrop-filter:blur(10px);border-top:0.5px solid rgba(255,255,255,0.1);flex-shrink:0;z-index:5}
 .input-row{display:flex;gap:10px;align-items:flex-end;max-width:680px;margin:0 auto}
 textarea{flex:1;background:rgba(255,255,255,0.1);border:0.5px solid rgba(255,255,255,0.2);border-radius:14px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);resize:none;outline:none;min-height:44px;max-height:120px;line-height:1.5;transition:border-color 0.2s ease}
 textarea::placeholder{color:rgba(255,255,255,0.35)}
@@ -176,8 +176,6 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
 .fortune-new{font-size:10px;color:rgba(255,200,80,0.6);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:none;transition:color 0.2s}
 .fortune-new:hover{color:rgba(255,200,80,0.9)}
 .fortune-new.show{display:block}
-.cookie-tap-hint{font-size:10px;color:rgba(255,200,80,0.65);font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-align:center;margin-top:6px;transition:opacity 0.3s ease}
-.cookie-tap-hint.hidden{opacity:0;pointer-events:none}
 
 /* Constellation */
 .constellation-canvas{width:100%;height:110px;border-radius:10px;background:rgba(0,0,30,0.5);border:0.5px solid rgba(255,255,255,0.1);cursor:crosshair;display:block}
@@ -208,18 +206,16 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
   .mood-option{padding:12px 14px;gap:10px}
   .mood-emoji{font-size:18px}
 
-  /* Chat layout — single column, corner floats */
+  /* Chat layout — stack vertically on mobile */
   #chat{flex-direction:column}
-  .chat-main{flex:1;min-height:0;width:100%}
+  .chat-main{flex:1;min-height:0;height:auto}
 
-  /* Comfort corner becomes floating card above lantern button */
-  .comfort-corner{position:fixed;bottom:130px;right:12px;width:0;height:0;overflow:visible;transition:none;flex-shrink:0;z-index:20}
-  .comfort-corner.open{width:0;height:0}
-  .corner-inner-wrap{position:absolute;bottom:0;right:0;width:220px;height:auto;max-height:70vh;border-radius:16px;border:0.5px solid rgba(255,200,80,0.25);box-shadow:0 8px 32px rgba(0,0,0,0.6);overflow:hidden;transform-origin:bottom right;transform:scale(0.85);opacity:0;pointer-events:none;transition:transform 0.25s cubic-bezier(0.4,0,0.2,1),opacity 0.2s ease}
-  .comfort-corner.open .corner-inner-wrap{transform:scale(1);opacity:1;pointer-events:auto}
-  .corner-content{padding:64px 12px 16px;overflow-y:auto;max-height:calc(70vh - 64px)}
+  /* Comfort corner becomes bottom sheet on mobile */
+  .comfort-corner{width:100% !important;height:0;overflow:hidden;transition:height 0.4s cubic-bezier(0.4,0,0.2,1);flex-shrink:0}
+  .comfort-corner.open{height:60vh;width:100% !important}
+  .corner-inner-wrap{width:100% !important;height:100%}
 
-  /* String lights adapt to card width */
+  /* String lights adapt to full width */
   .string-lights svg{width:100%}
 
   /* Feature rows more touch friendly */
@@ -246,9 +242,6 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
   /* Input */
   .chat-input-wrap{padding:8px 12px 16px}
   textarea{font-size:16px}
-
-  /* Lantern fixed on mobile so it floats above input */
-  .lantern-btn{position:fixed;bottom:72px;right:14px;z-index:15}
 
   /* Mood options full width */
   .mood-options{gap:8px}
@@ -442,7 +435,6 @@ textarea:focus{border-color:rgba(93,173,226,0.6)}
                     <span class="cookie-half cookie-right">🥠</span>
                   </div>
                 </div>
-                <div class="cookie-tap-hint" id="cookieTapHint">Tap it to crack it!</div>
                 <div class="paper-strip" id="paperStrip">
                   <div class="paper-lines"></div>
                   <div class="fortune-text" id="fortuneText"></div>
@@ -485,6 +477,17 @@ const FORTUNES=["You don't have to finish tonight. You just have to start.","Com
 let messages=[],isLoading=false,audioCtx=null,soundNodes=[],isPlayingSound=false,selectedSound=null,cornOpen=false,artRaf=null,constPoints=[];
 const inputEl=document.getElementById('input'),sendBtn=document.getElementById('sendBtn'),messagesEl=document.getElementById('messages');
 inputEl.addEventListener('input',()=>{sendBtn.disabled=!inputEl.value.trim()||isLoading});
+
+// Prevent keyboard from pushing layout up on mobile
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize',()=>{
+    document.documentElement.style.setProperty('--vh',window.visualViewport.height*0.01+'px');
+    scrollToBottom();
+  });
+}
+inputEl.addEventListener('focus',()=>{
+  setTimeout(scrollToBottom,300);
+});
 function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px'}
 function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage()}}
 function scrollToBottom(){setTimeout(()=>{messagesEl.scrollTop=messagesEl.scrollHeight},50)}
@@ -522,23 +525,10 @@ function toggleBreath(){const p=document.getElementById('breathPanel');const o=p
 function stopBreath(){document.querySelectorAll('.breath-ring-big,.breath-center-big').forEach(r=>r.style.animationPlayState='paused')}
 function startBreath(){document.querySelectorAll('.breath-ring-big,.breath-center-big').forEach(r=>r.style.animationPlayState='running')}
 function toggleFortune(){const p=document.getElementById('fortunePanel');const o=p.classList.contains('open');closeAllFeatures();if(!o){p.classList.add('open');document.getElementById('fortuneBtn').classList.add('active');resetCookie()}}
-function resetCookie(){const w=document.getElementById('cookieWrap'),s=document.getElementById('paperStrip'),t=document.getElementById('fortuneText'),n=document.getElementById('fortuneNew'),h=document.getElementById('cookieTapHint');w.classList.remove('cracking');s.classList.remove('open');t.textContent='';n.classList.remove('show');document.getElementById('cookieWhole').style.opacity='1';if(h)h.classList.remove('hidden')}
+function resetCookie(){const w=document.getElementById('cookieWrap'),s=document.getElementById('paperStrip'),t=document.getElementById('fortuneText'),n=document.getElementById('fortuneNew');w.classList.remove('cracking');s.classList.remove('open');t.textContent='';n.classList.remove('show');document.getElementById('cookieWhole').style.opacity='1'}
 function playCrackSound(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const buf=ctx.createBuffer(1,ctx.sampleRate*0.15,ctx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*0.04));const src=ctx.createBufferSource();src.buffer=buf;const g=ctx.createGain();g.gain.value=0.3;src.connect(g);g.connect(ctx.destination);src.start();setTimeout(()=>ctx.close(),500)}catch(e){}}
-function crackCookie(){const w=document.getElementById('cookieWrap');if(w.classList.contains('cracking'))return;playCrackSound();w.classList.add('cracking');const h=document.getElementById('cookieTapHint');if(h)h.classList.add('hidden');setTimeout(()=>{const s=document.getElementById('paperStrip'),t=document.getElementById('fortuneText'),n=document.getElementById('fortuneNew');const f=FORTUNES[Math.floor(Math.random()*FORTUNES.length)];t.textContent=f;s.classList.add('open');setTimeout(()=>n.classList.add('show'),800)},400)}
-function newFortune(){
-  const w=document.getElementById('cookieWrap'),s=document.getElementById('paperStrip'),n=document.getElementById('fortuneNew');
-  n.style.transition='opacity 0.25s ease';n.style.opacity='0';
-  s.style.transition='opacity 0.3s ease';s.style.opacity='0';
-  setTimeout(()=>{
-    w.style.transition='opacity 0.3s ease';w.style.opacity='0';
-    setTimeout(()=>{
-      resetCookie();
-      w.style.transition='';w.style.opacity='';
-      s.style.transition='';s.style.opacity='';
-      n.style.transition='';n.style.opacity='';
-    },300);
-  },250);
-}
+function crackCookie(){const w=document.getElementById('cookieWrap');if(w.classList.contains('cracking'))return;playCrackSound();w.classList.add('cracking');setTimeout(()=>{const s=document.getElementById('paperStrip'),t=document.getElementById('fortuneText'),n=document.getElementById('fortuneNew');const f=FORTUNES[Math.floor(Math.random()*FORTUNES.length)];t.textContent=f;s.classList.add('open');setTimeout(()=>n.classList.add('show'),800)},400)}
+function newFortune(){resetCookie();setTimeout(crackCookie,300)}
 function toggleConstellation(){const p=document.getElementById('constPanel');const o=p.classList.contains('open');closeAllFeatures();if(!o){p.classList.add('open');document.getElementById('constBtn').classList.add('active');setTimeout(initConst,50)}}
 function initConst(){const canvas=document.getElementById('constCanvas');canvas.onclick=(e)=>{const rect=canvas.getBoundingClientRect(),x=(e.clientX-rect.left)*(canvas.width/rect.width),y=(e.clientY-rect.top)*(canvas.height/rect.height);constPoints.push({x,y});drawConst()};drawConst()}
 function drawConst(){const canvas=document.getElementById('constCanvas'),ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);if(constPoints.length>1){ctx.beginPath();ctx.moveTo(constPoints[0].x,constPoints[0].y);for(let i=1;i<constPoints.length;i++)ctx.lineTo(constPoints[i].x,constPoints[i].y);ctx.strokeStyle='rgba(255,220,120,0.3)';ctx.lineWidth=0.8;ctx.stroke()}constPoints.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,2.5,0,Math.PI*2);ctx.fillStyle='#ffd080';ctx.shadowBlur=6;ctx.shadowColor='#ffcc00';ctx.fill();ctx.shadowBlur=0})}
